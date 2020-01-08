@@ -1,29 +1,16 @@
-My Google Apps Script :star::
+###### Google Scripts Samples
 
-1\. [Birthdays and anniversaries with dates for your calendar](https://github.com/empenoso/Google-Apps-Script/blob/master/README.md#1-google-calendar_birthdays-and-anniversaries-with-dates-for-your-calendargs-underage)
+This repo is a fork of https://github.com/empenoso/Google-Apps-Script.
+_____________
 
-2\. [A child’s age in months and years, with a monthly reminder](https://github.com/empenoso/Google-Apps-Script/blob/master/README.md#2-google-calendar_a-childs-age-in-months-and-years-with-a-monthly-remindergs-baby)
-
-Read this in other languages: [English](README.md), [Русский язык](README.ru.md).
+**Scripts in the repo**:
+  * _scripts/calendar/Age of your contacts.gs_ - scans your Google Contacts list and for 
+those contacts which have date of birthday specified creates new event in your Google Calendar.
+How to use:
+  1. [Create new calendar](https://calendar.google.com/calendar/r/settings/createcalendar?tab=mc1)
+  In our case it's _Autogen birthdays_ (once it's created you can configure this calendar default settings like notifications) 
+<p><img src="Create calendar.png"></p>
 
 _____________
 
-# 1\. Google Calendar_Birthdays and anniversaries with dates for your calendar.gs :underage:
-*[Google Apps Script](Google%20Calendar_Birthdays%20and%20anniversaries%20with%20dates%20for%20your%20calendar.gs) that creates events (birthdays and anniversaries), indicating the past years in the calendar.*
-
-As a user of an Android phone, I was not always happy with the fact that my calendar displayed the birthdays of contacts without indicating the age of a person. The same situation was with the anniversaries of contacts - there seems to be an anniversary, but it is not clear how many years the anniversary is for. Looking through your contacts' details, finding the year of birth or the date of the anniversary, and then figuring the math - there has never been time for this. I decided to simplify my life and wrote a Google Apps Script, which first, searches for these events in a special calendar that displays these events by default. And then, in the second step, it calculates the age for specific contacts and creates events in the main calendar. This script was published on the [Google Sheets Telegram channel (in Russian)](https://t.me/google_sheets/365).
-
-![Google Calendar_Birthdays and anniversaries with dates for your calendar](Google%20Calendar_Birthdays%20and%20anniversaries%20with%20dates%20for%20your%20calendar.png)
-
-# 2\. Google Calendar_A child’s age in months and years, with a monthly reminder.gs :baby:
-*[Google Apps Script](Google%20Calendar_A%20child’s%20age%20in%20months%20and%20years%2C%20with%20a%20monthly%20reminder.gs) is great for all young fathers - it shows how many months and years the child is old, with a monthly reminder.*
-
-This is a code that makes life easier for young fathers - because while all the grandmothers perfectly remember their grandson’s/granddaughter’s birthday and congratulate on this event every month - I could not keep it in my memory. I decided to slightly automate the process and at the same time figure out how to work with dates in Google Apps Script. And of course, to make this reminder appear in advance, and not on the baby’s birthday! This script was published on the [Google Sheets Telegram channel (in Russian)](https://t.me/google_sheets/435).
-
-![Google Calendar_A child’s age in months and years, with a monthly reminder](Google%20Calendar_A%20child’s%20age%20in%20months%20and%20years%2C%20with%20a%20monthly%20reminder.png)
-
-________
-
-Mikhail Shardin
-
-https://www.facebook.com/mikhail.shardin
+Ilya Avdeev
