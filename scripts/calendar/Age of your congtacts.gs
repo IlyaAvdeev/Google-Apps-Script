@@ -132,8 +132,10 @@ function removeAllCalendarEvents() {
 
 function getEventByTag(key, value) {
   for (var event in targetCalendarEvents) {
-    if (event.getTag(key) == value) {
-      return event;
+    if(typeof event.getTag === 'function') {
+      if (event.getTag(key) == value) {
+        return event;
+      }
     }
   }
   return null;
