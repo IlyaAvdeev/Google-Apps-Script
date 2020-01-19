@@ -148,9 +148,10 @@ function scheduleNextAppLaunch() {
         ScriptApp.deleteTrigger(triggers[i]);
     }
     
-    ScriptApp.newTrigger("contactAge2Calendar")
-    .timeBased()
+    ScriptApp.newTrigger("contactAge2Calendar")//https://developers.google.com/apps-script/reference/script/script-app#newTrigger(String)
+    .timeBased()//https://developers.google.com/apps-script/reference/script/trigger-builder#timeBased()
     .onWeekDay(CalendarApp.Weekday.SUNDAY)
     .atHour(1)
+    .inTimezone("Europe/Moscow")//http://joda-time.sourceforge.net/timezones.html
     .create();
 }
