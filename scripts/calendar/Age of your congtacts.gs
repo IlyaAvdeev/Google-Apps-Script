@@ -102,7 +102,7 @@ function contactAge2Calendar() {
       continue;
     }
     
-    if (year == null || year == undefined || year == 0) {
+    if (year == undefined || year == null || year == 0) {
       Logger.log('WARN: information about year of birthday is not available.');
       continue;
     }
@@ -124,14 +124,13 @@ function contactAge2Calendar() {
       var title = name + " – день рождения, " + agetostr(years);
       var event = getEventByTag('CID', contactId);
       if (event == null) {
-        event = targetCalendar.createAllDayEvent(title,new Date(thisYear, month - 1, day));
-        event.setTag('CID', contactId);
+        var event2 = targetCalendar.createAllDayEvent(title,new Date(thisYear, month - 1, day));
+        event2.setTag('CID', contactId);
+        Logger.log('INFO: EventID is ' + event2.getId() + ' for contact ' + name);
       } else {
         Logger.log('INFO: Event with CID found.');
         event.setTitle(title);
       }
-      
-      Logger.log('INFO: EventID is ' + event.getId() + ' for contact ' + name);
     } catch (error) {
       Logger.log('ERROR: ' + error);
     }
@@ -146,9 +145,10 @@ function removeAllCalendarEvents() {
 }
 
 function getEventByTag(key, value) {
-  for (var event in targetCalendarEvents) {
+  for (var i = 0; i < targetCalendarEvents.length; i++) {
+    var event = targetCalendarEvents[i];
     if(typeof event.getTag === 'function') {
-      if (event.getTag(key) == value) {
+      if (event.getTag(key) === value) {
         return event;
       }
     }
