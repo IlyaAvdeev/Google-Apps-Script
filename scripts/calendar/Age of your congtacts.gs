@@ -72,6 +72,8 @@ function month2I(month) {
 }
 
 function contactAge2Calendar() {
+  var today_month = today.getMonth();//0-11
+  var today_day = today.getDate();//1-31 
   for (var i = 0; i < contactList.length; i++) {//https://developers.google.com/apps-script/reference/contacts/contact
     var contact = contactList[i];
     var contactId = contact.getId();
@@ -87,8 +89,8 @@ function contactAge2Calendar() {
     var month, year = 0, day;
     try {
       year = birthday.getYear();
-      month = month2I(birthday.getMonth());
-      day = birthday.getDay();
+      month = month2I(birthday.getMonth());//1-12
+      day = birthday.getDay();//1-31
     } 
     catch (error) {
       Logger.log('ERROR: ' + error);
@@ -105,6 +107,18 @@ function contactAge2Calendar() {
       continue;
     }
     
+    if ((month - 1) < today_month) {
+      // too late, not interested in this.      
+      continue;
+    } else {
+      if ((month - 1) == today_month) {
+        if (day < today_day) {
+          // too late, not interested in this.
+          continue;
+        }
+      }
+    }
+          
     var years = thisYear - year;
     try {//https://developers.google.com/apps-script/reference/calendar/calendar#createAllDayEvent(String,Date)
       var title = name + " – день рождения, " + agetostr(years);
@@ -113,6 +127,7 @@ function contactAge2Calendar() {
         event = targetCalendar.createAllDayEvent(title,new Date(thisYear, month - 1, day));
         event.setTag('CID', contactId);
       } else {
+        Logger.log('INFO: Event with CID found.');
         event.setTitle(title);
       }
       
