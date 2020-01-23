@@ -5,6 +5,7 @@ var today;
 var contactList;
 var thisYear;
 var targetCalendarEvents;
+var journal = '';
 
 function agetostr(age) {//inspired by https://gist.github.com/paulvales/113b08bdf3d4fc3beb2a5e0045d9729d
 	var txt;
@@ -127,6 +128,7 @@ function contactAge2Calendar() {
         var event2 = targetCalendar.createAllDayEvent(title,new Date(thisYear, month - 1, day));
         event2.setTag('CID', contactId);
         Logger.log('INFO: EventID is ' + event2.getId() + ' for contact ' + name);
+        journal += title + ' on ' + event2.getAllDayEndDate().toString() + '\n';
       } else {
         Logger.log('INFO: Event with CID found.');
         event.setTitle(title);
@@ -134,6 +136,12 @@ function contactAge2Calendar() {
     } catch (error) {
       Logger.log('ERROR: ' + error);
     }
+  }
+
+  if (journal.length > 0) {
+    //send email to self https://developers.google.com/apps-script/reference/base/session?hl=ru
+    var gmailDraft = GmailApp.createDraft(Session.getActiveUser().getEmail(), 'Ages2Calendar Report ' + today.toString(), journal);//https://developers.google.com/apps-script/reference/gmail/gmail-app
+    gmailDraft.send();
   }
 }
 
