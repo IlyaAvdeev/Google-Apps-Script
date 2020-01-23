@@ -16,7 +16,7 @@ In our case it's _Autogen birthdays_ (once it's created you can configure this c
     
     d. Save the script and run _contactAge2Calendar_ function.
      
-    e. Google will request to grant rights for your application (for Google Calendar and Contacts).
+    e. Google will request to grant rights for your application (for Google Calendar, Contacts and GMail).
     
     f. Confirm and run _scheduleNextAppLaunch_. Every Sunday night the script will automatically scan your contacts and update your calendar.
 
