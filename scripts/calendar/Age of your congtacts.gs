@@ -142,6 +142,9 @@ function contactAge2Calendar() {
     //send email to self https://developers.google.com/apps-script/reference/base/session?hl=ru
     var gmailDraft = GmailApp.createDraft(Session.getActiveUser().getEmail(), 'Ages2Calendar Report ' + today.toString(), journal);//https://developers.google.com/apps-script/reference/gmail/gmail-app
     gmailDraft.send();
+  } else {
+    var gmailDraft = GmailApp.createDraft(Session.getActiveUser().getEmail(), 'Ages2Calendar Report ' + today.toString(), 'No new information about your contact birthdays added into Calendar.');//https://developers.google.com/apps-script/reference/gmail/gmail-app
+    gmailDraft.send();
   }
 }
 
